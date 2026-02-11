@@ -3,96 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTB Akademi | Disiplinli Finans</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>BTB Akademi | Sistemli Yatırım Modeli</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-scroll-behavior:smooth;
-}
 
-body{
-background:#070d18;
-color:#e6edf3;
-overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#050b15;color:#e6edf3;overflow-x:hidden;scroll-behavior:smooth;}
 
-/* Animated flowing background */
+/* LOADER */
 
-.background-flow{
+.loader{
 position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(circle at 30% 40%, rgba(212,175,55,0.08), transparent 40%),
-radial-gradient(circle at 70% 60%, rgba(212,175,55,0.05), transparent 40%);
-animation:moveBg 20s infinite alternate ease-in-out;
-z-index:-3;
+width:100%;
+height:100vh;
+background:#050b15;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+flex-direction:column;
+transition:1s;
 }
 
-@keyframes moveBg{
-0%{transform:translate(-5%,-5%) rotate(0deg);}
-100%{transform:translate(-10%,-10%) rotate(5deg);}
+.loader h1{
+font-size:48px;
+letter-spacing:6px;
+background:linear-gradient(90deg,#fff,#d4af37);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:pulse 2s infinite;
 }
 
-/* Floating particles */
+@keyframes pulse{
+0%{opacity:0.4;}
+50%{opacity:1;}
+100%{opacity:0.4;}
+}
 
-.particle{
+/* Glow mouse */
+
+.glow{
 position:fixed;
-width:4px;
-height:4px;
-background:#d4af37;
-border-radius:50%;
-opacity:0.4;
-animation:float 12s infinite linear;
-z-index:-2;
+width:600px;
+height:600px;
+background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 60%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
 }
 
-@keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-10vh);}
-}
+/* Progress */
 
-/* NAVBAR */
-
-nav{
+.progress{
 position:fixed;
 top:0;
-width:100%;
-background:rgba(7,13,24,0.85);
-backdrop-filter:blur(14px);
-padding:18px 0;
-z-index:1000;
-border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-.nav-container{
-width:90%;
-max-width:1300px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.nav-logo img{
-height:42px;
-}
-
-.nav-links a{
-color:#cbd5e1;
-text-decoration:none;
-margin-left:35px;
-font-size:14px;
-transition:0.3s;
-}
-
-.nav-links a:hover{
-color:#d4af37;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#c9a227,#f3d277);
+width:0%;
+z-index:2000;
 }
 
 /* HERO */
@@ -104,62 +74,66 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding-top:100px;
+position:relative;
+padding:100px 20px;
 }
 
-.hero-title{
-font-size:64px;
-font-weight:800;
-letter-spacing:4px;
-margin-bottom:25px;
-animation:fadeUp 1.2s ease forwards;
+canvas{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:0.25;
+z-index:-2;
 }
 
-.hero-sub{
-font-size:22px;
-max-width:850px;
-line-height:2;
+.logo{
+font-size:85px;
+font-weight:900;
+letter-spacing:8px;
+background:linear-gradient(90deg,#ffffff,#d4af37);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.slogan{
+margin-top:20px;
+font-size:18px;
+letter-spacing:3px;
 color:#cbd5e1;
-margin-bottom:50px;
-animation:fadeUp 1.6s ease forwards;
 }
 
-.hero-sub span{
-color:#d4af37;
-font-weight:600;
+.hero-text{
+margin-top:50px;
+max-width:900px;
+font-size:22px;
+line-height:2.2;
 }
 
 .cta{
-padding:18px 48px;
+margin-top:60px;
+padding:18px 60px;
 background:linear-gradient(90deg,#c9a227,#f3d277);
 color:#070d18;
-font-weight:600;
-border:none;
-border-radius:50px;
-cursor:pointer;
-transition:0.3s;
-font-size:16px;
+border-radius:60px;
 text-decoration:none;
-animation:fadeUp 2s ease forwards;
+font-weight:600;
+transition:0.4s;
 }
 
 .cta:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 40px rgba(212,175,55,0.4);
-}
-
-@keyframes fadeUp{
-from{opacity:0; transform:translateY(40px);}
-to{opacity:1; transform:translateY(0);}
+transform:translateY(-8px);
+box-shadow:0 30px 70px rgba(212,175,55,0.6);
 }
 
 /* SECTIONS */
 
 section{
-padding:140px 0;
+padding:160px 20px;
 opacity:0;
 transform:translateY(60px);
-transition:1.2s ease;
+transition:1s;
 }
 
 section.visible{
@@ -168,72 +142,66 @@ transform:translateY(0);
 }
 
 .container{
-width:90%;
-max-width:1300px;
+max-width:1100px;
 margin:auto;
 }
 
-.section-title{
-text-align:center;
-font-size:36px;
-font-weight:700;
-margin-bottom:90px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-}
-
-.card{
-background:rgba(17,25,40,0.8);
-backdrop-filter:blur(16px);
-padding:45px;
-border-radius:28px;
-border:1px solid rgba(255,255,255,0.06);
+.glass{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:30px;
+padding:60px;
 transition:0.4s;
 }
 
-.card:hover{
-transform:translateY(-12px);
-border:1px solid rgba(212,175,55,0.5);
-box-shadow:0 25px 60px rgba(0,0,0,0.6);
+.glass:hover{
+border:1px solid rgba(212,175,55,0.6);
+box-shadow:0 40px 90px rgba(0,0,0,0.8);
 }
 
-.card h3{
+.text-block{
+font-size:19px;
+line-height:2.1;
+margin-bottom:25px;
+}
+
+/* FORM */
+
+input, textarea{
+width:100%;
+padding:18px;
 margin-bottom:20px;
-font-size:20px;
+background:#0b1220;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:12px;
+color:white;
 }
 
-.card p{
-font-size:15px;
-line-height:1.9;
-color:#b8c1cc;
+button{
+padding:16px 45px;
+background:linear-gradient(90deg,#c9a227,#f3d277);
+border:none;
+border-radius:50px;
+font-weight:600;
+cursor:pointer;
 }
 
-.about{
-max-width:950px;
-margin:auto;
+.success{
+display:none;
+margin-top:30px;
+padding:20px;
+background:#111827;
+border:1px solid #d4af37;
+border-radius:20px;
 text-align:center;
-font-size:20px;
-line-height:2.2;
-color:#cbd5e1;
 }
 
 footer{
-padding:80px 0;
+padding:100px;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.05);
-font-size:14px;
 color:#7f8c9b;
-}
-
-/* Responsive */
-
-@media(max-width:768px){
-.hero-title{font-size:40px;}
-.hero-sub{font-size:18px;}
 }
 
 </style>
@@ -241,105 +209,159 @@ color:#7f8c9b;
 
 <body>
 
-<div class="background-flow"></div>
+<div class="loader" id="loader">
+<h1>BTB AKADEMİ</h1>
+</div>
 
-<!-- Floating particles -->
-<script>
-for(let i=0;i<25;i++){
-let p=document.createElement("div");
-p.className="particle";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(8+Math.random()*10)+"s";
-p.style.opacity=Math.random();
-document.body.appendChild(p);
-}
-</script>
-
-<nav>
-<div class="nav-container">
-<div class="nav-logo">
-<img src="logo.png" alt="BTB Akademi">
-</div>
-<div class="nav-links">
-<a href="#uzmanlik">Uzmanlık</a>
-<a href="#hakkimda">Hakkımda</a>
-<a href="https://t.me/KULLANICIADIN" target="_blank">Başvuru</a>
-</div>
-</div>
-</nav>
+<div class="glow" id="glow"></div>
+<div class="progress" id="progress"></div>
 
 <header>
-<h1 class="hero-title">BTB AKADEMİ</h1>
 
-<div class="hero-sub">
-Finansal piyasalarda kalıcı başarı; rastgele kazançlardan değil,  
-<span>disiplinli sistem</span> ve güçlü bir zihinsel yapıdan doğar.  
-BTB Akademi yatırımcıyı bağımlı yapmaz;  
-<span>karar alabilen bir yatırımcıya dönüştürür.</span>
+<canvas id="chart"></canvas>
+
+<div class="logo">BTB Akademi</div>
+
+<div class="slogan">
+Borsa Ticaret Birliği<br>
+Sistemli Yatırım Modeli
 </div>
 
-<a href="https://t.me/KULLANICIADIN" target="_blank" class="cta">
-Telegram Üzerinden Başvur
-</a>
+<div class="hero-text">
+Finansal piyasalarda başarı tesadüf değildir.  
+Sistem kurulur. Disiplin uygulanır. Risk yönetilir.  
+Gerçek güç tahminde değil, kontrolün kendisindedir.
+</div>
+
+<a href="#basvuru" class="cta">Programa Başvur</a>
+
 </header>
 
-<section id="uzmanlik">
+<section>
 <div class="container">
-<div class="section-title">Uzmanlık Alanları</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Teknik Analiz & Fiyat Psikolojisi</h3>
-<p>Piyasa yapısını, likidite hareketlerini ve fiyat davranışlarını profesyonel perspektifte analiz etme yaklaşımı.</p>
+<div class="glass">
+<div class="text-block">
+BTB Akademi, 13+ yıllık piyasa deneyimine sahip kurucu mentor tarafından yapılandırılmıştır.
 </div>
-
-<div class="card">
-<h3>Makro Stratejik Okuma</h3>
-<p>Küresel para politikaları ve ekonomik verilerin piyasaya etkisini sistematik değerlendirme.</p>
+<div class="text-block">
+Biz hızlı kazanç değil; sürdürülebilir sistem öğretiriz.
 </div>
-
-<div class="card">
-<h3>Sermaye Koruma Disiplini</h3>
-<p>Kazançtan önce korunumu öncelik kabul eden sürdürülebilir portföy yönetimi yaklaşımı.</p>
+<div class="text-block">
+Önce sermayeni koru. Sonra sistemi uygula. Sonra büyüt.
 </div>
-
-<div class="card">
-<h3>Algoritmik Sistem Geliştirme</h3>
-<p>Kendi geliştirilmiş indikatörler ve sistematik işlem modelleri ile veri odaklı karar süreci.</p>
-</div>
-
 </div>
 </div>
 </section>
 
-<section id="hakkimda">
+<section id="basvuru">
 <div class="container">
-<div class="section-title">Hakkımda</div>
-
-<div class="about">
-1988 yılında Antalya Aksu’da doğdum. Döviz bürosu işleten bir babanın yanında büyüdüm ve piyasaları çocuk yaşta tanıdım.  
-Akdeniz Üniversitesi İktisat lisans ve Marmara Üniversitesi Bankacılık & Finans yüksek lisans eğitimimin ardından 13 yılı aşkın süredir finansal piyasalarda aktif olarak yer alıyorum.  
-
-Benim için finans; yalnızca kazanç değil, sistemdir.  
-Ve sistem; disiplin olmadan işlemez.
+<div class="glass">
+<form id="applicationForm">
+<input type="text" placeholder="Ad – Soyad" required>
+<input type="number" placeholder="Yaş" required>
+<textarea placeholder="Piyasa deneyimin?" required></textarea>
+<textarea placeholder="En büyük hatan?" required></textarea>
+<textarea placeholder="Neden katılmak istiyorsun?" required></textarea>
+<input type="text" placeholder="Haftalık ayırabileceğin süre" required>
+<input type="text" placeholder="Telegram kullanıcı adın" required>
+<button type="submit">Başvuruyu Gönder</button>
+</form>
+<div class="success" id="successMessage">
+Başvurunuz alınmıştır. Telegram üzerinden iletişime geçilecektir.
+</div>
 </div>
 </div>
 </section>
 
 <footer>
-BTB Akademi © 2026 | Disiplinli Zihinler, Güçlü Sermaye
+BTB Akademi © 2026 | Disiplinli Zihinler
 </footer>
 
 <script>
+
+/* Loader */
+window.addEventListener("load",()=>{
+setTimeout(()=>{document.getElementById("loader").style.opacity="0";
+setTimeout(()=>{document.getElementById("loader").style.display="none";},1000);
+},1500);
+});
+
+/* Scroll progress */
+window.addEventListener("scroll",function(){
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+});
+
+/* Glow */
+document.addEventListener("mousemove",e=>{
+const glow=document.getElementById("glow");
+glow.style.left=e.pageX+"px";
+glow.style.top=e.pageY+"px";
+});
+
+/* Section reveal */
 const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
 sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top<window.innerHeight/1.2){
-sec.classList.add("visible");
+const top=sec.getBoundingClientRect().top;
+if(top<window.innerHeight-100){sec.classList.add("visible");}
+});
+});
+
+/* Canvas chart */
+
+const canvas=document.getElementById("chart");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let points=[];
+for(let i=0;i<60;i++){
+points.push({
+x:i*(canvas.width/60),
+y:Math.random()*canvas.height/2 + canvas.height/3
+});
 }
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.beginPath();
+ctx.moveTo(points[0].x,points[0].y);
+
+for(let i=1;i<points.length;i++){
+points[i].y += Math.sin(Date.now()/800+i)*0.3;
+ctx.lineTo(points[i].x,points[i].y);
+}
+
+ctx.strokeStyle="rgba(212,175,55,0.8)";
+ctx.lineWidth=2;
+ctx.stroke();
+requestAnimationFrame(draw);
+}
+draw();
+
+/* Telegram bot integration */
+document.getElementById("applicationForm").addEventListener("submit",async function(e){
+e.preventDefault();
+
+const BOT_TOKEN="BURAYA_BOT_TOKEN";
+const CHAT_ID="BURAYA_CHAT_ID";
+
+let data=[...this.elements].filter(el=>el.tagName!="BUTTON")
+.map(el=>el.placeholder+": "+el.value).join("\n");
+
+await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({chat_id:CHAT_ID,text:data})
 });
+
+document.getElementById("successMessage").style.display="block";
+this.reset();
 });
+
 </script>
 
 </body>
