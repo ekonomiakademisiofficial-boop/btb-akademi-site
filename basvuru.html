@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTB Akademi | Programa Başvuru</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+background:#f4f6f9;
+color:#1a1f2b;
+overflow-x:hidden;
+}
+
+/* GOLD PROGRESS BAR */
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#c9a227,#f3d277);
+width:0%;
+z-index:999;
+}
+
+/* SOFT BACKGROUND GLOW */
+body::before{
+content:"";
+position:fixed;
+top:50%;
+left:50%;
+width:900px;
+height:900px;
+background:radial-gradient(circle, rgba(212,175,55,0.08), transparent 60%);
+transform:translate(-50%,-50%);
+z-index:-1;
+}
+
+/* HEADER */
+header{
+padding:120px 20px 80px 20px;
+text-align:center;
+background:linear-gradient(to bottom,#ffffff,#eef1f5);
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+header.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+header h1{
+font-size:42px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+header p{
+max-width:800px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#444;
+}
+
+.manifesto{
+margin-top:40px;
+font-weight:600;
+color:#111;
+font-size:18px;
+}
+
+/* SECTION */
+.section{
+padding:100px 20px;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:60px;
+border-radius:20px;
+box-shadow:0 30px 80px rgba(0,0,0,0.08);
+}
+
+.card p{
+margin-bottom:20px;
+line-height:1.9;
+}
+
+.small-note{
+font-size:14px;
+color:#777;
+text-align:center;
+margin-top:30px;
+}
+
+hr{
+margin:60px 0;
+opacity:0.1;
+}
+
+/* FORM */
+form input, form textarea{
+width:100%;
+padding:16px;
+margin-bottom:18px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+transition:0.3s;
+}
+
+form input:focus, form textarea:focus{
+border-color:#c9a227;
+box-shadow:0 0 10px rgba(201,162,39,0.3);
+outline:none;
+}
+
+form textarea{
+min-height:100px;
+}
+
+/* BUTTON */
+button{
+background:linear-gradient(90deg,#c9a227,#f3d277);
+color:#111;
+border:none;
+padding:16px 40px;
+border-radius:50px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+animation:glowPulse 3s infinite;
+}
+
+button:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 40px rgba(201,162,39,0.4);
+}
+
+@keyframes glowPulse{
+0%{box-shadow:0 0 0 rgba(201,162,39,0.4);}
+50%{box-shadow:0 0 25px rgba(201,162,39,0.4);}
+100%{box-shadow:0 0 0 rgba(201,162,39,0.4);}
+}
+
+.success{
+display:none;
+margin-top:30px;
+padding:20px;
+border-radius:15px;
+background:#f9fafc;
+border:1px solid #d4af37;
+text-align:center;
+}
+
+footer{
+margin-top:120px;
+padding:60px;
+background:#0b1220;
+color:#cbd5e1;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress"></div>
+
+<header id="hero">
+<h1>BTB Akademi | Programa Başvuru</h1>
+<p>
+Finansal piyasalarda sistemli ve disiplinli bir yaklaşım benimsemek isteyen adaylar için sınırlı kontenjanlı kabul süreci.
+</p>
+<div class="manifesto">
+Bu bir kayıt sayfası değil.<br>
+Bu bir değerlendirme sürecidir.
+</div>
+</header>
+
+<section class="section" id="content">
+<div class="container">
+<div class="card">
+
+<p>
+BTB Akademi herkese açık bir eğitim platformu değildir.
+Her dönem yalnızca sınırlı sayıda katılımcı kabul edilir.
+</p>
+
+<p>
+Amacımız; öğrenmeye açık, disiplinli ve uzun vadeli düşünebilen yatırımcı adaylarıyla çalışmaktır.
+</p>
+
+<p>
+Başvurular değerlendirme sürecinden geçer.
+Uygun görülen adaylarla sesli olarak kısa bir görüşme sağlanılır.
+</p>
+
+<div class="small-note">
+Her dönem maksimum 100 katılımcı kabul edilmektedir.
+</div>
+
+<hr>
+
+<p style="text-align:center; font-weight:500;">
+Lütfen soruları samimi ve açık şekilde yanıtlayınız.
+</p>
+
+<form id="applicationForm">
+<input type="text" placeholder="Ad – Soyad" required>
+<input type="number" placeholder="Yaş" required>
+<textarea placeholder="Daha önce piyasa deneyimin var mı? (Kısa açıklama)" required></textarea>
+<textarea placeholder="Piyasadaki en büyük hatan neydi?" required></textarea>
+<textarea placeholder="Neden BTB Akademi’ye katılmak istiyorsun?" required></textarea>
+<input type="text" placeholder="Telegram kullanıcı adın" required>
+
+<div style="text-align:center; margin-top:20px;">
+<button type="submit">Başvuru Formunu Doldur</button>
+</div>
+</form>
+
+<div class="success" id="successMessage">
+Başvurunuz alınmıştır.<br>
+Tüm başvurular incelenir ve uygun adaylarla Telegram üzerinden iletişime geçilir.<br>
+Süreç genellikle 24–72 saat içinde tamamlanır.
+</div>
+
+<hr>
+
+<p style="text-align:center; font-weight:500;">
+Unutmayın;<br><br>
+Piyasada kalıcı olmak, hızlı olmakla değil, doğru olmakla ilgilidir.
+</p>
+
+<p class="small-note">
+Başvuru göndermek herhangi bir ücret yükümlülüğü oluşturmaz.  
+Süreç ön görüşme sonrası netleşir.
+</p>
+
+</div>
+</div>
+</section>
+
+<footer>
+BTB Akademi © 2026  
+Sistemli Yatırım Modeli
+</footer>
+
+<script>
+
+/* Scroll Progress */
+window.addEventListener("scroll",function(){
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.querySelector(".progress").style.width=scrolled+"%";
+});
+
+/* Fade In */
+function reveal(){
+document.getElementById("hero").classList.add("visible");
+document.getElementById("content").classList.add("visible");
+}
+window.addEventListener("load",reveal);
+
+/* Form Submit */
+document.getElementById("applicationForm").addEventListener("submit",function(e){
+e.preventDefault();
+document.getElementById("successMessage").style.display="block";
+this.reset();
+});
+
+</script>
+
+</body>
+</html>
