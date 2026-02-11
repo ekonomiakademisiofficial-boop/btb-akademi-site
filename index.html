@@ -17,29 +17,44 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#0a0f1c;
+background:#070d18;
 color:#e6edf3;
 overflow-x:hidden;
 }
 
-/* Animated glow */
+/* Animated flowing background */
 
-body::before{
-content:"";
+.background-flow{
 position:fixed;
-width:900px;
-height:900px;
-background:radial-gradient(circle, rgba(212,175,55,0.07), transparent 70%);
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-animation:glowMove 8s infinite alternate ease-in-out;
-z-index:-1;
+width:200%;
+height:200%;
+background:radial-gradient(circle at 30% 40%, rgba(212,175,55,0.08), transparent 40%),
+radial-gradient(circle at 70% 60%, rgba(212,175,55,0.05), transparent 40%);
+animation:moveBg 20s infinite alternate ease-in-out;
+z-index:-3;
 }
 
-@keyframes glowMove{
-0%{transform:translate(-50%,-45%);}
-100%{transform:translate(-50%,-55%);}
+@keyframes moveBg{
+0%{transform:translate(-5%,-5%) rotate(0deg);}
+100%{transform:translate(-10%,-10%) rotate(5deg);}
+}
+
+/* Floating particles */
+
+.particle{
+position:fixed;
+width:4px;
+height:4px;
+background:#d4af37;
+border-radius:50%;
+opacity:0.4;
+animation:float 12s infinite linear;
+z-index:-2;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
 }
 
 /* NAVBAR */
@@ -48,16 +63,16 @@ nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(10,15,28,0.85);
-backdrop-filter:blur(12px);
-padding:15px 0;
+background:rgba(7,13,24,0.85);
+backdrop-filter:blur(14px);
+padding:18px 0;
 z-index:1000;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .nav-container{
 width:90%;
-max-width:1200px;
+max-width:1300px;
 margin:auto;
 display:flex;
 justify-content:space-between;
@@ -65,13 +80,13 @@ align-items:center;
 }
 
 .nav-logo img{
-height:38px;
+height:42px;
 }
 
 .nav-links a{
 color:#cbd5e1;
 text-decoration:none;
-margin-left:30px;
+margin-left:35px;
 font-size:14px;
 transition:0.3s;
 }
@@ -89,47 +104,62 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding-top:80px;
+padding-top:100px;
 }
 
-.hero-text{
-max-width:750px;
-font-size:21px;
-line-height:1.9;
+.hero-title{
+font-size:64px;
+font-weight:800;
+letter-spacing:4px;
+margin-bottom:25px;
+animation:fadeUp 1.2s ease forwards;
+}
+
+.hero-sub{
+font-size:22px;
+max-width:850px;
+line-height:2;
 color:#cbd5e1;
-margin:40px 0;
+margin-bottom:50px;
+animation:fadeUp 1.6s ease forwards;
 }
 
-.hero-text span{
+.hero-sub span{
 color:#d4af37;
 font-weight:600;
 }
 
 .cta{
-padding:16px 42px;
+padding:18px 48px;
 background:linear-gradient(90deg,#c9a227,#f3d277);
-color:#0a0f1c;
+color:#070d18;
 font-weight:600;
 border:none;
-border-radius:40px;
+border-radius:50px;
 cursor:pointer;
 transition:0.3s;
-font-size:15px;
+font-size:16px;
 text-decoration:none;
+animation:fadeUp 2s ease forwards;
 }
 
 .cta:hover{
-transform:translateY(-5px);
-box-shadow:0 15px 30px rgba(212,175,55,0.4);
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(212,175,55,0.4);
 }
 
-/* Sections */
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* SECTIONS */
 
 section{
-padding:120px 0;
+padding:140px 0;
 opacity:0;
-transform:translateY(40px);
-transition:1s ease;
+transform:translateY(60px);
+transition:1.2s ease;
 }
 
 section.visible{
@@ -139,70 +169,60 @@ transform:translateY(0);
 
 .container{
 width:90%;
-max-width:1200px;
+max-width:1300px;
 margin:auto;
 }
 
 .section-title{
 text-align:center;
-font-size:32px;
+font-size:36px;
 font-weight:700;
-margin-bottom:70px;
-position:relative;
-}
-
-.section-title::after{
-content:"";
-display:block;
-width:90px;
-height:3px;
-background:#d4af37;
-margin:18px auto 0;
+margin-bottom:90px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:35px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
 }
 
 .card{
-background:#121b2d;
-padding:40px;
-border-radius:24px;
-border:1px solid rgba(255,255,255,0.05);
+background:rgba(17,25,40,0.8);
+backdrop-filter:blur(16px);
+padding:45px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.06);
 transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-12px);
 border:1px solid rgba(212,175,55,0.5);
-box-shadow:0 20px 45px rgba(0,0,0,0.5);
+box-shadow:0 25px 60px rgba(0,0,0,0.6);
 }
 
 .card h3{
-margin-bottom:18px;
-font-size:18px;
-color:#ffffff;
+margin-bottom:20px;
+font-size:20px;
 }
 
 .card p{
-font-size:14px;
-line-height:1.8;
+font-size:15px;
+line-height:1.9;
 color:#b8c1cc;
 }
 
 .about{
-max-width:900px;
+max-width:950px;
 margin:auto;
 text-align:center;
-font-size:19px;
-line-height:2;
+font-size:20px;
+line-height:2.2;
 color:#cbd5e1;
 }
 
 footer{
-padding:70px 0;
+padding:80px 0;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.05);
 font-size:14px;
@@ -212,9 +232,8 @@ color:#7f8c9b;
 /* Responsive */
 
 @media(max-width:768px){
-.nav-links{display:none;}
-.hero-text{font-size:18px;}
-.section-title{font-size:26px;}
+.hero-title{font-size:40px;}
+.hero-sub{font-size:18px;}
 }
 
 </style>
@@ -222,7 +241,19 @@ color:#7f8c9b;
 
 <body>
 
-<!-- NAVBAR -->
+<div class="background-flow"></div>
+
+<!-- Floating particles -->
+<script>
+for(let i=0;i<25;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(8+Math.random()*10)+"s";
+p.style.opacity=Math.random();
+document.body.appendChild(p);
+}
+</script>
 
 <nav>
 <div class="nav-container">
@@ -237,21 +268,20 @@ color:#7f8c9b;
 </div>
 </nav>
 
-<!-- HERO -->
-
 <header>
-<div class="hero-text">
-Finansal piyasalarda başarı; tesadüf değil, sistem ve karakter işidir.  
-BTB Akademi, kısa vadeli heyecan yerine <span>uzun vadeli istikrar</span> üzerine kuruludur.  
-Burada amaç sinyal vermek değil, <span>sistem öğretmektir.</span>
+<h1 class="hero-title">BTB AKADEMİ</h1>
+
+<div class="hero-sub">
+Finansal piyasalarda kalıcı başarı; rastgele kazançlardan değil,  
+<span>disiplinli sistem</span> ve güçlü bir zihinsel yapıdan doğar.  
+BTB Akademi yatırımcıyı bağımlı yapmaz;  
+<span>karar alabilen bir yatırımcıya dönüştürür.</span>
 </div>
 
 <a href="https://t.me/KULLANICIADIN" target="_blank" class="cta">
 Telegram Üzerinden Başvur
 </a>
 </header>
-
-<!-- UZMANLIK -->
 
 <section id="uzmanlik">
 <div class="container">
@@ -260,67 +290,56 @@ Telegram Üzerinden Başvur
 <div class="grid">
 
 <div class="card">
-<h3>Teknik Analiz & Fiyat Davranışı</h3>
-<p>Likidite bölgeleri, trend yapıları ve senaryo bazlı işlem disiplini.</p>
+<h3>Teknik Analiz & Fiyat Psikolojisi</h3>
+<p>Piyasa yapısını, likidite hareketlerini ve fiyat davranışlarını profesyonel perspektifte analiz etme yaklaşımı.</p>
 </div>
 
 <div class="card">
-<h3>Temel & Makroekonomik Okuma</h3>
-<p>Küresel ekonomik verileri stratejik çerçevede yorumlama yaklaşımı.</p>
+<h3>Makro Stratejik Okuma</h3>
+<p>Küresel para politikaları ve ekonomik verilerin piyasaya etkisini sistematik değerlendirme.</p>
 </div>
 
 <div class="card">
-<h3>Risk & Portföy Yönetimi</h3>
-<p>Sermaye korunumu öncelikli, sürdürülebilir risk/ödül sistemi.</p>
+<h3>Sermaye Koruma Disiplini</h3>
+<p>Kazançtan önce korunumu öncelik kabul eden sürdürülebilir portföy yönetimi yaklaşımı.</p>
 </div>
 
 <div class="card">
-<h3>İndikatör & Sistematik İşlem</h3>
-<p>Kendi geliştirilmiş algoritmik indikatörler ve disiplinli işlem yapısı.</p>
+<h3>Algoritmik Sistem Geliştirme</h3>
+<p>Kendi geliştirilmiş indikatörler ve sistematik işlem modelleri ile veri odaklı karar süreci.</p>
 </div>
 
 </div>
 </div>
 </section>
-
-<!-- HAKKIMDA -->
 
 <section id="hakkimda">
 <div class="container">
 <div class="section-title">Hakkımda</div>
 
 <div class="about">
-1988 yılında Antalya Aksu’da doğdum. Döviz bürosu işleten bir babanın yanında piyasaların içinde büyüdüm.  
-Akdeniz Üniversitesi İktisat lisans ve Marmara Üniversitesi Bankacılık & Finans yüksek lisans eğitimlerimin ardından 13 yılı aşkın süredir aktif olarak piyasalarda yer alıyorum.  
+1988 yılında Antalya Aksu’da doğdum. Döviz bürosu işleten bir babanın yanında büyüdüm ve piyasaları çocuk yaşta tanıdım.  
+Akdeniz Üniversitesi İktisat lisans ve Marmara Üniversitesi Bankacılık & Finans yüksek lisans eğitimimin ardından 13 yılı aşkın süredir finansal piyasalarda aktif olarak yer alıyorum.  
 
-Yaklaşımım; hızlı kazanç değil, sürdürülebilir disiplin üzerinedir.  
-Çünkü finansal başarı; doğru strateji kadar güçlü bir karakter gerektirir.
+Benim için finans; yalnızca kazanç değil, sistemdir.  
+Ve sistem; disiplin olmadan işlemez.
 </div>
 </div>
 </section>
 
 <footer>
-BTB Akademi © 2026  
-<br>
-Disiplinli Zihinler, Güçlü Sermaye
+BTB Akademi © 2026 | Disiplinli Zihinler, Güçlü Sermaye
 </footer>
 
 <script>
-
-/* Scroll reveal */
-
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-sections.forEach(section => {
-const position = section.getBoundingClientRect().top;
-const screenPosition = window.innerHeight / 1.2;
-if(position < screenPosition){
-section.classList.add("visible");
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight/1.2){
+sec.classList.add("visible");
 }
 });
 });
-
 </script>
 
 </body>
